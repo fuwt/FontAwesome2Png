@@ -20,25 +20,34 @@ def main(args):
     c = r['color']
     dir = "png_" + str(s) + "_" + str(c)
     os.mkdir(dir)
-    max = len(fonts)
+    length = len(fonts)
     i = 0
     print('正在转换..')
     for k,v in fonts.items():
-        image = Image.new("RGBA", (s,s), (0,0,0,0))
+        image = Image.new("RGBA", (s*3,s*3), (0,0,0,0))
         draw = ImageDraw.Draw(image)
-        font = ImageFont.truetype("fonts\\fontawesome-webfont.ttf", s-2)
-        draw.text((1,1),v, font=font, fill=c)
+        font = ImageFont.truetype("fonts\\fontawesome-webfont.ttf", s)
+        draw.text((s,s),v, font=font, fill=c)
         box = image.getbbox()
-        print(box)
-        # image.save(dir + "\\" + k + ".png")
-        # i += 1
-        # myprint(i, max)
+        w = box[2] - box[0]
+        h = box[3] - box[1]
+        ns = max(w,h) + 2
+        box = [
+            box[0]-(ns-w)//2,
+            box[1]-(ns-h)//2,
+            box[2]+(ns-w)//2,
+            box[3]+(ns-h)//2,
+        ]
+        cimage = image.crop(box)
+        cimage.save(dir + "\\" + k + ".png")
+        i += 1
+        myprint(i, length)
     print("\nDone")
 
-def myprint(i, max):
-    a = i * 100 // max
-    b = (max - i) * 100 // max
-    s = str(i) + " of " + str(max)
+def myprint(i, length):
+    a = i * 100 // length
+    b = (length - i) * 100 // length
+    s = str(i) + " of " + str(length)
     l = len(s)
     sys.stdout.write('' * 130 + '\r')
     sys.stdout.flush()
