@@ -10,23 +10,25 @@ pip install pillow
 
 
 # 目录结构：
-卷 DATA 的文件夹 PATH 列表
-卷序列号为 929D-D40D
-D:.
-│  font-awesom-to-png.py
-│  HELP-US-OUT.txt
-│  
-├─css
-│      font-awesome.css (必须)
-│      font-awesome.min.css
-│      
-├─fonts
-│      fontawesome-webfont.eot
-│      fontawesome-webfont.svg
-│      fontawesome-webfont.ttf (必须)
-│      fontawesome-webfont.woff
-│      fontawesome-webfont.woff2
-│      FontAwesome.otf
-│      
-├─less
-└─scss
+卷 DATA 的文件夹 PATH 列表  
+卷序列号为 929D-D40D  
+D:.  
+│  font-awesom-to-png.py  
+│  HELP-US-OUT.txt  
+│    
+├─css  
+│      font-awesome.css (必须)  
+│      font-awesome.min.css  
+│        
+├─fonts  
+│      fontawesome-webfont.eot  
+│      fontawesome-webfont.svg  
+│      fontawesome-webfont.ttf (必须)  
+│      fontawesome-webfont.woff  
+│      fontawesome-webfont.woff2  
+│      FontAwesome.otf  
+│        
+├─less  
+└─scss  
+
+![扫码得红包](ali.jpg)
