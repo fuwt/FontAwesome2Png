@@ -42,10 +42,10 @@ def main(args):
         w = box[2] - box[0]
         h = box[3] - box[1]
         l = max(w,h)
-        box = ( box[0] - ( s - w )//2,
-                box[1] - ( s - h )//2,
-                box[0] - ( s - w )//2 + s,
-                box[1] - ( s - h )//2 + s )
+        box = ( box[0] - ( s - w )//2 - 2,
+                box[1] - ( s - h )//2 - 2,
+                box[0] - ( s - w )//2 + s + 2,
+                box[1] - ( s - h )//2 + s  + 2)
         image = image.crop(box)
         image.save(dir + "\\" + k + '.png')
         i += 1
