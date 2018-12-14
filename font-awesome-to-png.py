@@ -29,19 +29,28 @@ def main(args):
         font = ImageFont.truetype("fonts\\fontawesome-webfont.ttf", s)
         draw.text((s,s),v, font=font, fill=c)
         box = image.getbbox()
+
         w = box[2] - box[0]
         h = box[3] - box[1]
-        ns = max(w,h) + 2
-        box = [
-            box[0]-(ns-w)//2,
-            box[1]-(ns-h)//2,
-            box[2]+(ns-w)//2,
-            box[3]+(ns-h)//2,
-        ]
-        cimage = image.crop(box)
-        cimage.save(dir + "\\" + k + ".png")
+        l = max(w,h)
+        nfs = s * s // l
+        image = Image.new("RGBA", (s*3,s*3), (0,0,0,0))
+        draw = ImageDraw.Draw(image)
+        font = ImageFont.truetype("fonts\\fontawesome-webfont.ttf", nfs)
+        draw.text((s,s),v, font=font, fill=c)
+        box = image.getbbox()
+        w = box[2] - box[0]
+        h = box[3] - box[1]
+        l = max(w,h)
+        box = ( box[0] - ( s - w )//2,
+                box[1] - ( s - h )//2,
+                box[0] - ( s - w )//2 + s,
+                box[1] - ( s - h )//2 + s )
+        image = image.crop(box)
+        image.save(dir + "\\" + k + '.png')
         i += 1
-        myprint(i, length)
+        myprint(i,length)
+
     print("\nDone")
 
 def myprint(i, length):
