@@ -5,7 +5,7 @@ import sys
 import os
 
 css = open('css\\font-awesome.css').read()
-regex = re.compile(r'\.([a-zA-Z-]+)[\s\S]+?\\(\w+)')
+regex = re.compile(r'\bfa-([\w-]+)[\s\S]+?\\(\w+)')
 fonts = {}
 for t in regex.findall(css):
     fonts[t[0]] = chr(int(t[1], 16))
@@ -33,7 +33,7 @@ def main(args):
         w = box[2] - box[0]
         h = box[3] - box[1]
         l = max(w,h)
-        nfs = s * s // l
+        nfs = s * s // l - 2
         image = Image.new("RGBA", (s*3,s*3), (0,0,0,0))
         draw = ImageDraw.Draw(image)
         font = ImageFont.truetype("fonts\\fontawesome-webfont.ttf", nfs)
@@ -42,10 +42,10 @@ def main(args):
         w = box[2] - box[0]
         h = box[3] - box[1]
         l = max(w,h)
-        box = ( box[0] - ( s - w )//2 - 2,
-                box[1] - ( s - h )//2 - 2,
-                box[0] - ( s - w )//2 + s + 2,
-                box[1] - ( s - h )//2 + s  + 2)
+        box = ( box[0] - ( s - w )//2,
+                box[1] - ( s - h )//2,
+                box[0] - ( s - w )//2 + s,
+                box[1] - ( s - h )//2 + s)
         image = image.crop(box)
         image.save(dir + "\\" + k + '.png')
         i += 1

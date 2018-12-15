@@ -6,7 +6,7 @@ pip install pillow
 运行 font-awesome-to-png.py
 可接受参数 size=int color=#str
 不输入参数默认导出 50x50 黑色字体图片
-示例：font-waesome-to-png.py size=100 color=#ff00ff
+示例：font-awesome-to-png.py size=100 color=#ff00ff
 
 
 # 目录结构：
