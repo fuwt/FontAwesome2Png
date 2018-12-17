@@ -5,7 +5,7 @@ import sys
 import os
 
 css = open('css\\font-awesome.css').read()
-regex = re.compile(r'\bfa-([\w-]+)[\s\S]+?\\(\w+)')
+regex = re.compile(r'\b(fa-[\w-]+)[\s\S]{22}\\(\w+)')
 fonts = {}
 for t in regex.findall(css):
     fonts[t[0]] = chr(int(t[1], 16))
